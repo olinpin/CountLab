@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Counter" representedClassName="Counter" syncable="YES">
+        <attribute name="backgroundColor" attributeType="String" minValueString="7" maxValueString="7" defaultValueString="#FFDDDD"/>
         <attribute name="emoji" optional="YES" attributeType="String"/>
         <attribute name="goal" optional="YES" attributeType="Float" minValueString="0" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>

@@ -19,6 +19,7 @@ extension Counter {
     @NSManaged public var id: UUID?
     @NSManaged public var emoji: String?
     @NSManaged public var goal: Float
+    @NSManaged public var backgroundColor: String?
     @NSManaged public var name: String?
     @NSManaged public var log: NSSet?
 

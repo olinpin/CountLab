@@ -18,6 +18,7 @@ struct PersistenceController {
         newCounter.goal = 10
         newCounter.name = "Pull ups"
         newCounter.log = []
+        newCounter.backgroundColor = "#FFDDDD"
         for _ in 0..<10 {
             let newLog = Log(context: viewContext)
             newLog.value = [1,2,3,4,5,-1,2,3,4,5].randomElement()!
