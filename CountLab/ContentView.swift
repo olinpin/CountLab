@@ -32,12 +32,20 @@ struct ContentView: View {
                 .onDelete(perform: deleteCounter)
             }
             .toolbar {
+                ToolbarItem {
+                    Button(action: addCounter) {
+                        Label("Add Item", systemImage: "plus")
+                    }
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
             }
             Text("Select an item")
         }
+    }
+    
+    private func addCounter() {
     }
 
 //    private func addItem() {
