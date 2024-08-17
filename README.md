@@ -4,14 +4,19 @@ Application that will allow you to keep track of anything you need
 
 
 ## TODO:
-- [ ] main page
-    - [ ] list of all available counters
-- [ ] info for each counter
-    - [ ] each counter should have some description, 
-    - [ ] emoji
-    - [ ] color behind emoji
-    - [ ] store the count needed with timestamp for later displaying of graphs, etc
-    - [ ] daily goal?
+- [x] main page
+    - [x] list of all available counters
+- [x] info for each counter
+    - [x] each counter should have some name
+    - [x] emoji
+    - [x] color behind emoji
+    - [x] store the count needed with timestamp for later displaying of graphs, etc
+    - [x] daily goal?
+- [ ] List view page
+    - [x] emoji
+    - [x] counter name
+    - [ ] how many done out of a goal
+    - [ ] how many done in total
 - [ ] counter page
     - [ ] emoji
     - [ ] count
@@ -29,4 +34,3 @@ Application that will allow you to keep track of anything you need
     - [ ] widget similar to counter page with less info
     - [ ] widget will lead to counter page
     - [ ] option to choose which counter is the widget for
-    - [ ] 

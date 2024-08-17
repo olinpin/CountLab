@@ -21,12 +21,11 @@ struct CounterListView: View {
             List {
                 ForEach(counters) { counter in
                     NavigationLink {
-//                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                        Text("\(counter.name ?? "")\(counter.emoji ?? "")")
+                        CounterView(counter: counter)
                     } label: {
-//                        Text(item.timestamp!, formatter: itemFormatter)
-                        Text("\(counter.name ?? "")\(counter.emoji ?? "")")
-
+//                        Text("\(counter.name ?? "")\(counter.emoji ?? "")")
+                        CounterListItemView(counter: counter)
+                            .frame(height: 100)
                     }
                 }
                 .onDelete(perform: deleteCounter)

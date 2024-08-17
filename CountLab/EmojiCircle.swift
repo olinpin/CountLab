@@ -11,17 +11,14 @@ struct EmojiCircle: View {
     var emoji: String
     var backgroundColor: Color
     var body: some View {
-        ZStack {
-            Circle()
-                .foregroundStyle(backgroundColor)
-            Text(emoji)
-                .font(.system(size: 10000))
-                .minimumScaleFactor(0.0001)
-                .lineLimit(1)
-                .padding()
-        }
-        .padding()
-        .ignoresSafeArea()
+        Circle()
+            .foregroundStyle(backgroundColor)
+            .overlay {
+                Text(emoji)
+                    .font(.system(size: 1000))
+                    .minimumScaleFactor(0.0001)
+            }
+            .ignoresSafeArea()
     }
 }
 
