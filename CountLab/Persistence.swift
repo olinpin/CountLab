@@ -13,9 +13,16 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
+        let newCounter = Counter(context: viewContext)
+        newCounter.emoji = "🐱"
+        newCounter.goal = 10
+        newCounter.name = "Pull ups"
+        newCounter.log = []
         for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newLog = Log(context: viewContext)
+            newLog.value = [1,2,3,4,5,-1,2,3,4,5].randomElement()!
+            newLog.timestamp = Date()
+            newLog.counter = newCounter
         }
         do {
             try viewContext.save()
@@ -28,10 +35,10 @@ struct PersistenceController {
         return result
     }()
 
-    let container: NSPersistentContainer
+    let container: NSPersistentCloudKitContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "CountLab")
+        container = NSPersistentCloudKitContainer(name: "CountLab")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
