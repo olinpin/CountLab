@@ -23,44 +23,42 @@ struct AddCounter: View {
     @State private var errorMessage: String?
     
     @State private var color: Color = .primary
-
+    
     // TODO: Add chooser for emojis and colors
     
     var body: some View {
-        VStack {
-            Form {
-                Section {
-                    EmojiCircle(emoji: self.emoji, backgroundColor: self.backgroundColor)
-                        .padding()
-                }
-                Section {
-                    TextField("Counter name", text: $name)
-                    TextField("Daily Goal", text: $stringGoal)
-                        .keyboardType(.numberPad)
-                        .onChange(of: stringGoal, initial: false) { oldValue, newValue in
-                            if let value = Float(newValue) {
-                                goal = value
-                            }
-                            self.color = .primary
-                        }
-                        .foregroundStyle(self.color)
-                }
-            }
-            .alert(isPresented: $showError) {
+        Form {
+            Section {
+                EmojiCircle(emoji: self.emoji, backgroundColor: self.backgroundColor)
+                    .padding()
                 
-                Alert(title: Text("\(errorMessage ?? "No errors")"))
             }
-            
-            HStack {
-                Button (action: {
-                    self.validate()
-                    if !showError {
-                        self.visible = false
+            Section {
+                ColorPicker("Background color", selection: $backgroundColor)
+            }
+            Section {
+                TextField("Name", text: $name)
+                TextField("Daily Goal", text: $stringGoal)
+                    .keyboardType(.numberPad)
+                    .onChange(of: stringGoal, initial: false) { oldValue, newValue in
+                        if let value = Float(newValue) {
+                            goal = value
+                        }
+                        self.color = .primary
                     }
-                }, label: {
-                    Text("Submit")
-                })
+                    .foregroundStyle(self.color)
             }
+            Button (action: {
+                self.validate()
+                if !showError {
+                    self.visible = false
+                }
+            }, label: {
+                Text("Submit")
+            })
+        }
+        .alert(isPresented: $showError) {
+            Alert(title: Text("\(errorMessage ?? "No errors")"))
         }
     }
     
