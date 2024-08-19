@@ -27,20 +27,6 @@ struct CounterListItemView: View {
 
 var numberOfDecimalDigits = 2
 
-extension Formatter {
-    static let withSeparator: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-
-        // minimum decimal digit, eg: to display 2.00 as 2
-        formatter.minimumFractionDigits = 0
-
-        // maximum decimal digit, eg: to display 2.5021 as 2.50
-        formatter.maximumFractionDigits = numberOfDecimalDigits
-        
-        return formatter
-    }()
-}
 
 #Preview {
     let request = Counter.fetchRequest()

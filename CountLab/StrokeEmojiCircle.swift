@@ -14,6 +14,7 @@ struct StrokeEmojiCircle: View {
     @Binding var done: Float
     var goal: Float
     
+    // TODO: part of circle is see through
     var body: some View {
         ZStack {
             Circle()
