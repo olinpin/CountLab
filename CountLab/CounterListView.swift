@@ -15,6 +15,8 @@ struct CounterListView: View {
         sortDescriptors: [],
         animation: .default)
     private var counters: FetchedResults<Counter>
+    
+    @State var addCounter = true
 
     var body: some View {
         NavigationView {
@@ -23,7 +25,6 @@ struct CounterListView: View {
                     NavigationLink {
                         CounterView(counter: counter)
                     } label: {
-//                        Text("\(counter.name ?? "")\(counter.emoji ?? "")")
                         CounterListItemView(counter: counter)
                             .frame(height: 100)
                     }
@@ -32,7 +33,7 @@ struct CounterListView: View {
             }
             .toolbar {
                 ToolbarItem {
-                    Button(action: addCounter) {
+                    Button(action: {self.addCounter = true}) {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
@@ -42,11 +43,16 @@ struct CounterListView: View {
             }
             Text("Select an item")
         }
+        .sheet(isPresented: $addCounter, content: {
+            NavigationStack {
+                AddCounter(visible: $addCounter)
+                    .navigationTitle("Add Counter")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+        })
     }
     
-    private func addCounter() {
-    }
-
+    
 //    private func addItem() {
 //        withAnimation {
 //            let newItem = Item(context: viewContext)

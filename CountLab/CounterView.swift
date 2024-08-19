@@ -11,10 +11,17 @@ import CoreData
 struct CounterView: View {
     
     var counter: Counter
+    
+    var goal: Float = 10
+    
+    @State var done: Float? = 1
+    
     var body: some View {
-        EmojiCircle(
+        StrokeEmojiCircle(
             emoji: counter.emoji ?? "",
-            backgroundColor: Color.init(hex:counter.backgroundColor ?? "#FFFFFF") ?? Color(UIColor.systemBackground)
+            backgroundColor: Color.init(hex:counter.backgroundColor ?? "#FFFFFF") ?? Color(UIColor.systemBackground),
+            done: $done,
+            goal: goal
         )
         .padding()
     }
