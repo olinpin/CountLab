@@ -34,3 +34,7 @@ Application that will allow you to keep track of anything you need
     - [ ] widget similar to counter page with less info
     - [ ] widget will lead to counter page
     - [ ] option to choose which counter is the widget for
+- [ ] Reminders
+    - [ ] Set reminders for each timer
+- [ ] Streaks
+    - [ ] "Good job, you've completed your goal 7 days in a row" etc.
