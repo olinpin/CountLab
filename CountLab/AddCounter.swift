@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EmojiPicker
 
 struct AddCounter: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -13,28 +14,36 @@ struct AddCounter: View {
     @Binding var visible: Bool
     @State var backgroundColor: Color = .random().opacity(0.25)
     @State var name: String = ""
-    @State var emoji: String = String(UnicodeScalar(Array(0x1F300...0x1F3F0).randomElement()!)!)
     
     @State var goal: Float = 10
     @State var stringGoal: String = ""
     
     @State var showError = false
-    
     @State private var errorMessage: String?
     
     @State private var color: Color = .primary
-    
-    // TODO: Add chooser for emojis and colors
-    
+    @State private var displayEmojiPicker: Bool = false
+    @State private var emoji: Emoji = DefaultEmojiProvider().getAll().randomElement()!
+
     var body: some View {
         Form {
             Section {
-                EmojiCircle(emoji: self.emoji, backgroundColor: self.backgroundColor)
+                EmojiCircle(emoji: self.emoji.value, backgroundColor: self.backgroundColor)
                     .padding()
-                
             }
             Section {
                 ColorPicker("Background color", selection: $backgroundColor)
+                Button(action: {
+                    self.displayEmojiPicker = true
+                }, label: {
+                    HStack {
+                        Text("Emoji: ")
+                            .foregroundStyle(Color.primary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("\(self.emoji.value)")
+                        // TODO: fix the alignment of the emoji and color picker
+                    }
+                })
             }
             Section {
                 TextField("Name", text: $name)
@@ -60,6 +69,23 @@ struct AddCounter: View {
         .alert(isPresented: $showError) {
             Alert(title: Text("\(errorMessage ?? "No errors")"))
         }
+        .sheet(isPresented: $displayEmojiPicker) {
+            NavigationView {
+                EmojiPickerView(selectedEmoji: Binding($emoji))
+                    .navigationTitle("Emojis")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing, content: {
+                Button(action: {
+                    self.visible = false
+                }, label: {
+                    Text("Cancel")
+                        .foregroundStyle(.red)
+                })
+            })
+        }
     }
     
     private func validate() {
@@ -83,7 +109,7 @@ struct AddCounter: View {
             let counter = Counter(context: viewContext)
             counter.backgroundColor = self.backgroundColor.hex
             counter.name = self.name
-            counter.emoji = self.emoji
+            counter.emoji = self.emoji.value
             counter.goal = self.goal
             
             do {

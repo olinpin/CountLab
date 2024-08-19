@@ -47,7 +47,6 @@ struct CounterListView: View {
             NavigationStack {
                 AddCounter(visible: $addCounter)
                     .navigationTitle("Add Counter")
-                    .navigationBarTitleDisplayMode(.inline)
             }
         })
     }
