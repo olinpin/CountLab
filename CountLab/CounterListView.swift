@@ -24,6 +24,7 @@ struct CounterListView: View {
                 ForEach(counters) { counter in
                     NavigationLink {
                         CounterView(counter: counter)
+                            .navigationTitle(counter.name ?? "")
                     } label: {
                         CounterListItemView(counter: counter)
                             .frame(height: 100)

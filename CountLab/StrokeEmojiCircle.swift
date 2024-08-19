@@ -11,13 +11,13 @@ struct StrokeEmojiCircle: View {
     var emoji: String
     var backgroundColor: Color
 
-    @Binding var done: Float?
-    var goal: Float?
+    @Binding var done: Float
+    var goal: Float
     
     var body: some View {
         ZStack {
             Circle()
-                .trim(from: 0, to: CGFloat(done! / goal!))
+                .trim(from: 0, to: CGFloat(done / goal))
                 .stroke(backgroundColor.opacity(5000), lineWidth: 20)
                 .rotationEffect(.degrees(-90))
                 .brightness(-0.1)

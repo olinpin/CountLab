@@ -12,7 +12,7 @@ struct QuantityButtons: View {
     var bottomLeft: Float = -10
     var topRight: Float = 1
     var bottomRight: Float = 10
-    @State var sum: Float = 0
+    @Binding var sum: Float
 
     var body: some View {
         HStack {
@@ -29,10 +29,18 @@ struct QuantityButtons: View {
     
     func fullButton(value: Float) -> some View {
         Button(action: {
-            self.sum += value
+            withAnimation {
+                self.sum += value
+            }
         }, label: {
             let color: Color = value < 0 ? .red : .blue
-            Text("\(formatFloat(value))")
+            QuantityButtons.buttonView(value: Utils.formatFloat(value), color: color)
+        })
+
+    }
+    
+    static func buttonView(value: String, color: Color) -> some View {
+            Text("\(value)")
                 .padding()
                 .foregroundStyle(.black)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -41,16 +49,12 @@ struct QuantityButtons: View {
                 .font(.system(size: 200))
                 .minimumScaleFactor(0.01)
                 .aspectRatio(3/2, contentMode: .fit)
-        })
 
     }
     
-    func formatFloat(_ number: Float) -> String {
-        let formatter = Formatter.withSeparator
-        return formatter.string(from: number as NSNumber) ?? "\(number)"
-    }
 }
 
 #Preview {
-    QuantityButtons()
+    
+    return QuantityButtons(sum: Binding.constant(0))
 }

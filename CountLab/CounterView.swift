@@ -14,15 +14,22 @@ struct CounterView: View {
     
     var goal: Float = 10
     
-    @State var done: Float? = 1
+    @State var done: Float = 0
     
     var body: some View {
-        StrokeEmojiCircle(
-            emoji: counter.emoji ?? "",
-            backgroundColor: Color.init(hex:counter.backgroundColor ?? "#FFFFFF") ?? Color(UIColor.systemBackground),
-            done: $done,
-            goal: goal
-        )
+        VStack {
+            StrokeEmojiCircle(
+                emoji: counter.emoji ?? "",
+                backgroundColor: Color.init(hex:counter.backgroundColor ?? "#FFFFFF") ?? Color(UIColor.systemBackground),
+                done: $done,
+                goal: goal
+            )
+                .padding(.bottom)
+            Text("Total: \(Utils.formatFloat(self.done))/\(Utils.formatFloat(self.goal))")
+                .font(.largeTitle)
+            QuantityButtons(sum: $done)
+                .padding(.top)
+        }
         .padding()
     }
 }
