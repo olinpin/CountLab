@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6C3FCA272C733B85007CDAE0 /* StrokeEmojiCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3FCA262C733B85007CDAE0 /* StrokeEmojiCircle.swift */; };
+		6C3FCA2A2C73704F007CDAE0 /* EmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 6C3FCA292C73704F007CDAE0 /* EmojiPicker */; };
 		6C6DBA332C70D2FD00CA3C80 /* Counter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6DBA2F2C70D2FD00CA3C80 /* Counter+CoreDataClass.swift */; };
 		6C6DBA342C70D2FD00CA3C80 /* Counter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6DBA302C70D2FD00CA3C80 /* Counter+CoreDataProperties.swift */; };
 		6C6DBA352C70D2FD00CA3C80 /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6DBA312C70D2FD00CA3C80 /* Log+CoreDataClass.swift */; };
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C3FCA2A2C73704F007CDAE0 /* EmojiPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +131,9 @@
 			dependencies = (
 			);
 			name = CountLab;
+			packageProductDependencies = (
+				6C3FCA292C73704F007CDAE0 /* EmojiPicker */,
+			);
 			productName = CountLab;
 			productReference = 6CB2BB7E2C70C7F000CF6E1C /* CountLab.app */;
 			productType = "com.apple.product-type.application";
@@ -157,6 +162,9 @@
 				Base,
 			);
 			mainGroup = 6CB2BB752C70C7F000CF6E1C;
+			packageReferences = (
+				6C3FCA282C73704F007CDAE0 /* XCRemoteSwiftPackageReference "EmojiPicker" */,
+			);
 			productRefGroup = 6CB2BB7F2C70C7F000CF6E1C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -405,6 +413,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6C3FCA282C73704F007CDAE0 /* XCRemoteSwiftPackageReference "EmojiPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kelvas09/EmojiPicker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6C3FCA292C73704F007CDAE0 /* EmojiPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C3FCA282C73704F007CDAE0 /* XCRemoteSwiftPackageReference "EmojiPicker" */;
+			productName = EmojiPicker;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		6CB2BB8C2C70C7F100CF6E1C /* CountLab.xcdatamodeld */ = {
