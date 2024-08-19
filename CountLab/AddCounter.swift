@@ -61,6 +61,7 @@ struct AddCounter: View {
                 self.validate()
                 if !showError {
                     self.visible = false
+                    self.addCounter()
                 }
             }, label: {
                 Text("Submit")
@@ -111,6 +112,7 @@ struct AddCounter: View {
             counter.name = self.name
             counter.emoji = self.emoji.value
             counter.goal = self.goal
+            counter.id = UUID()
             
             do {
                 try viewContext.save()

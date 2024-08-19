@@ -12,6 +12,7 @@ Application that will allow you to keep track of anything you need
     - [x] color behind emoji
     - [x] store the count needed with timestamp for later displaying of graphs, etc
     - [x] daily goal?
+- [x] Add counter page
 - [ ] List view page
     - [x] emoji
     - [x] counter name

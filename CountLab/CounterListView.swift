@@ -16,7 +16,7 @@ struct CounterListView: View {
         animation: .default)
     private var counters: FetchedResults<Counter>
     
-    @State var addCounter = true
+    @State var addCounter = false
 
     var body: some View {
         NavigationView {
@@ -52,22 +52,6 @@ struct CounterListView: View {
     }
     
     
-//    private func addItem() {
-//        withAnimation {
-//            let newItem = Item(context: viewContext)
-//            newItem.timestamp = Date()
-//
-//            do {
-//                try viewContext.save()
-//            } catch {
-//                // Replace this implementation with code to handle the error appropriately.
-//                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//                let nsError = error as NSError
-//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//            }
-//        }
-//    }
-
     private func deleteCounter(offsets: IndexSet) {
         withAnimation {
             offsets.map { counters[$0] }.forEach(viewContext.delete)
