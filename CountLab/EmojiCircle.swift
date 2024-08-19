@@ -15,8 +15,8 @@ struct EmojiCircle: View {
             .foregroundStyle(backgroundColor)
             .overlay {
                 Text(emoji)
-                    .font(.system(size: 1000))
-                    .minimumScaleFactor(0.0001)
+                    .font(.system(size: 200))
+                    .minimumScaleFactor(0.001)
             }
             .ignoresSafeArea()
     }
