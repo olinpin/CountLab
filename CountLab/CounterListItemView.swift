@@ -23,10 +23,6 @@ struct CounterListItemView: View {
         .padding()
     }
     
-    func formatFloat(_ number: Float) -> String {
-        let formatter = Formatter.withSeparator
-        return formatter.string(from: number as NSNumber) ?? "\(number)"
-    }
 }
 
 var numberOfDecimalDigits = 2
