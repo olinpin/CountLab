@@ -94,3 +94,11 @@ extension Formatter {
         return formatter
     }()
 }
+
+extension Date {
+    var isToday: Bool {
+        let today = Calendar.current.dateComponents([.day, .year, .month], from: Date())
+        let date = Calendar.current.dateComponents([.day, .year, .month], from: self)
+        return today.day == date.day && today.month == date.month && today.year == date.year 
+    }
+}

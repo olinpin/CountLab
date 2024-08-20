@@ -19,13 +19,12 @@ Application that will allow you to keep track of anything you need
     - [ ] how many done out of a goal
     - [ ] how many done in total
 - [ ] counter page
-    - [ ] emoji
-    - [ ] count
+    - [x] emoji
+    - [x] count
     - [ ] option to choose count for which time period do you want to see
-    - [ ] how many did you finish out of your daily goal
+    - [x] how many did you finish out of your daily goal
     - [ ] total number done
-    - [ ] buttons for -1, +1, +5, +10
-        - [ ] buttons are modifiable (can be put as 0.5, 0.3, etc)
+    - [x] buttons for adding logs
 - [ ] Graph page
     - [ ] Kinda like apple health graphs, periods should be the same
     - [ ] take color from counter color?
@@ -39,3 +38,4 @@ Application that will allow you to keep track of anything you need
     - [ ] Set reminders for each timer
 - [ ] Streaks
     - [ ] "Good job, you've completed your goal 7 days in a row" etc.
+- [ ] Confeti when you achieve your daily goal
