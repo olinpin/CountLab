@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StrokeEmojiCircle: View {
     var counter: Counter
-    @State var done: Float = 10
+    var done: Float = 0.5
     // TODO: part of circle is see through
     var body: some View {
         let backgroundColor = Color.init(hex:counter.backgroundColor ?? "#FFFFFF") ?? Color(UIColor.systemBackground)

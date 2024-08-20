@@ -26,14 +26,16 @@ struct CounterView: View {
     @FocusState private var isTextFieldFocused: Bool
     
     @Environment(\.colorScheme) var colorScheme
+    
+    @State var doneToday: Float?
 
     
     var body: some View {
         VStack {
-            StrokeEmojiCircle(counter: counter)
+            StrokeEmojiCircle(counter: counter, done: doneToday ?? counter.doneToday())
                 .padding(.bottom)
             
-            Text("Total today: \(Utils.formatFloat(doneToday()))/\(Utils.formatFloat(self.goal))")
+            Text("Total today: \(Utils.formatFloat(doneToday ?? counter.doneToday()))/\(Utils.formatFloat(self.goal))")
                 .font(.largeTitle)
                 .foregroundColor(.primary)
                 .padding(.bottom)
@@ -105,18 +107,11 @@ struct CounterView: View {
             self.errorMessage = "Something went wrong while saving, please try again later"
             self.showAlert = true
         }
+        withAnimation {
+            self.doneToday = counter.doneToday()
+        }
     }
     
-    private func doneToday() -> Float {
-        let sum: [Float] = counter.log?.map( {
-            let log = $0 as! Log
-            if log.timestamp != nil && log.timestamp!.isToday {
-                return log.value
-            }
-            return 0
-        }) ?? []
-        return sum.reduce(0, +)
-    }
     
     func makeButton(text: String, action: @escaping () -> (), color: Color) -> some View {
         Button(action: action, label: {

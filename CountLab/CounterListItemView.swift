@@ -12,7 +12,7 @@ struct CounterListItemView: View {
     
     var body: some View {
         HStack {
-            StrokeEmojiCircle(counter: counter)
+            StrokeEmojiCircle(counter: counter, done: counter.doneToday())
             Text("\(counter.name ?? "")")
                 .font(.title2)
                 .padding()
