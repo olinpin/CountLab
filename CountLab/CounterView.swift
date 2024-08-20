@@ -13,7 +13,6 @@ struct CounterView: View {
 
     var counter: Counter
     
-    var goal: Float = 10
     
     @State var floatLog: Float = 0
     
@@ -25,17 +24,21 @@ struct CounterView: View {
     
     @FocusState private var isTextFieldFocused: Bool
     
-    @Environment(\.colorScheme) var colorScheme
     
-    @State var doneToday: Float?
+    @State var doneToday: Float
 
+
+    init(counter: Counter) {
+        self.counter = counter
+        self.doneToday = counter.doneToday()
+    }
     
     var body: some View {
         VStack {
-            StrokeEmojiCircle(counter: counter, done: doneToday ?? counter.doneToday())
+            StrokeEmojiCircle(counter: counter, done: doneToday)
                 .padding(.bottom)
             
-            Text("Total today: \(Utils.formatFloat(doneToday ?? counter.doneToday()))/\(Utils.formatFloat(self.goal))")
+            Text("Total today: \(Utils.formatFloat(doneToday))/\(Utils.formatFloat(counter.goal))")
                 .font(.largeTitle)
                 .foregroundColor(.primary)
                 .padding(.bottom)
