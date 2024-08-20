@@ -80,6 +80,8 @@ extension Color {
         }
 }
 
+let numberOfDecimalDigits = 2
+
 extension Formatter {
     static let withSeparator: NumberFormatter = {
         let formatter = NumberFormatter()

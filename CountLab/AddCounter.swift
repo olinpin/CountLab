@@ -24,6 +24,7 @@ struct AddCounter: View {
     @State private var color: Color = .primary
     @State private var displayEmojiPicker: Bool = false
     @State private var emoji: Emoji = DefaultEmojiProvider().getAll().randomElement()!
+    // TODO: Fix not all emojis being visible
 
     var body: some View {
         Form {
