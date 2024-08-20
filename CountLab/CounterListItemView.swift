@@ -12,17 +12,13 @@ struct CounterListItemView: View {
     
     var body: some View {
         HStack {
-            EmojiCircle(
-                emoji: counter.emoji ?? "",
-                backgroundColor: Color.init(hex:counter.backgroundColor ?? "#FFFFFF") ?? Color(UIColor.systemBackground)
-            )
+            StrokeEmojiCircle(counter: counter)
             Text("\(counter.name ?? "")")
                 .font(.title2)
                 .padding()
         }
         .padding()
     }
-    
 }
 
 var numberOfDecimalDigits = 2

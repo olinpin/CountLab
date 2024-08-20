@@ -8,25 +8,28 @@
 import SwiftUI
 
 struct StrokeEmojiCircle: View {
-    var emoji: String
-    var backgroundColor: Color
-
-    @Binding var done: Float
-    var goal: Float
-    
+    var counter: Counter
+    @State var done: Float = 10
     // TODO: part of circle is see through
     var body: some View {
+        let backgroundColor = Color.init(hex:counter.backgroundColor ?? "#FFFFFF") ?? Color(UIColor.systemBackground)
         ZStack {
             Circle()
-                .trim(from: 0, to: CGFloat(done / goal))
+                .trim(from: 0, to: CGFloat(done / counter.goal))
                 .stroke(backgroundColor.opacity(5000), lineWidth: 20)
                 .rotationEffect(.degrees(-90))
                 .brightness(-0.1)
-            EmojiCircle(emoji: emoji, backgroundColor: backgroundColor)
+            EmojiCircle(emoji: counter.emoji ?? "", backgroundColor: backgroundColor)
         }
     }
 }
 
 #Preview {
-    StrokeEmojiCircle(emoji: "🐱", backgroundColor: Color.red.opacity(0.2), done: Binding.constant(5), goal: 10)
+    let request = Counter.fetchRequest()
+    do {
+        let counters = try PersistenceController.preview.container.viewContext.fetch(request)
+        return StrokeEmojiCircle(counter: counters.first!)
+    } catch {
+    }
+    return StrokeEmojiCircle(counter: Counter(context: PersistenceController.preview.container.viewContext))
 }

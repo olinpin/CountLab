@@ -16,21 +16,48 @@ struct CounterView: View {
     
     @State var done: Float = 0
     
+    @State var numberField: Float?
+    
     var body: some View {
         VStack {
-            StrokeEmojiCircle(
-                emoji: counter.emoji ?? "",
-                backgroundColor: Color.init(hex:counter.backgroundColor ?? "#FFFFFF") ?? Color(UIColor.systemBackground),
-                done: $done,
-                goal: goal
-            )
+            StrokeEmojiCircle(counter: counter)
                 .padding(.bottom)
+            
             Text("Total: \(Utils.formatFloat(self.done))/\(Utils.formatFloat(self.goal))")
                 .font(.largeTitle)
-            QuantityButtons(sum: $done)
-                .padding(.top)
+                .foregroundColor(.primary)
+                .padding(.bottom)
+            
+            TextField("Enter Value", value: $numberField, formatter: Formatter.withSeparator)
+                    .keyboardType(.decimalPad)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.blue, lineWidth: 2)
+                    }
+                    .padding()
+            HStack(spacing: 20) {
+                makeButton(text: "Subtract", action: {}, color: .red)
+                makeButton(text: "Add", action: {}, color: .blue)
+            }
+            .padding(.top)
         }
         .padding()
+    }
+    
+    func makeButton(text: String, action: @escaping () -> (), color: Color) -> some View {
+        Button(action: action, label: {
+            Text(text)
+                .font(.title2)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(color)
+                .foregroundStyle(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+        })
     }
 }
 
