@@ -78,6 +78,18 @@ extension Color {
                               lroundf(b * 255))
             }
         }
+    
+    func luminance() -> CGFloat {
+        let components = UIColor(self).cgColor.components ?? [0, 0, 0, 1]
+        let red = components[0] * 0.299
+        let green = components[1] * 0.587
+        let blue = components[2] * 0.114
+        return red + green + blue
+    }
+    
+    func appropriateTextColor() -> Color {
+        return luminance() > 0.5 ? .black : .white
+    }
 }
 
 let numberOfDecimalDigits = 2
@@ -101,6 +113,13 @@ extension Date {
     var isToday: Bool {
         let today = Calendar.current.dateComponents([.day, .year, .month], from: Date())
         let date = Calendar.current.dateComponents([.day, .year, .month], from: self)
-        return today.day == date.day && today.month == date.month && today.year == date.year 
+        return today.day == date.day && today.month == date.month && today.year == date.year
+        
+    }
+    var DDMMYYYY: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        return dateFormatter.string(from: self)
     }
 }

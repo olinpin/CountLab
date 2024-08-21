@@ -69,6 +69,13 @@ struct CounterView: View {
                 makeButton(text: "Add", action: addValue, color: .blue)
             }
             .padding(.top)
+            NavigationLink {
+                LogsView(counter: counter)
+                    .navigationTitle("Past entries")
+            } label: {
+                Text("Past entries")
+                    .padding(.top)
+            }
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -133,11 +140,15 @@ struct CounterView: View {
     let request = Counter.fetchRequest()
     do {
         let counters = try PersistenceController.preview.container.viewContext.fetch(request)
-        return CounterView(counter: counters.first!)
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        return NavigationView {
+            CounterView(counter: counters.first!)
+                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        }
     } catch {
     }
-    return CounterView(counter: Counter(context: PersistenceController.preview.container.viewContext))
-        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    return NavigationView {
+        CounterView(counter: Counter(context: PersistenceController.preview.container.viewContext))
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
 
 }

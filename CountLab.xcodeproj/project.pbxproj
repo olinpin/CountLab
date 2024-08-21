@@ -23,6 +23,7 @@
 		6CB2BB892C70C7F100CF6E1C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CB2BB882C70C7F100CF6E1C /* Preview Assets.xcassets */; };
 		6CB2BB8B2C70C7F100CF6E1C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB2BB8A2C70C7F100CF6E1C /* Persistence.swift */; };
 		6CB2BB8E2C70C7F100CF6E1C /* CountLab.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6CB2BB8C2C70C7F100CF6E1C /* CountLab.xcdatamodeld */; };
+		6CB49EC02C75E4560027F1C0 /* LogsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB49EBF2C75E4560027F1C0 /* LogsView.swift */; };
 		6CC625022C73D0EC0055AA68 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC625012C73D0EC0055AA68 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		6CB2BB882C70C7F100CF6E1C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6CB2BB8A2C70C7F100CF6E1C /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		6CB2BB8D2C70C7F100CF6E1C /* CountLab.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CountLab.xcdatamodel; sourceTree = "<group>"; };
+		6CB49EBF2C75E4560027F1C0 /* LogsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsView.swift; sourceTree = "<group>"; };
 		6CC625012C73D0EC0055AA68 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +105,7 @@
 				6CB2BB852C70C7F100CF6E1C /* Assets.xcassets */,
 				6CB2BB872C70C7F100CF6E1C /* Preview Content */,
 				6C6DBA382C70D7BC00CA3C80 /* CounterView.swift */,
+				6CB49EBF2C75E4560027F1C0 /* LogsView.swift */,
 				6C6DBA3A2C70D90A00CA3C80 /* EmojiCircle.swift */,
 				6C3FCA262C733B85007CDAE0 /* StrokeEmojiCircle.swift */,
 				6C6DBA472C70E47600CA3C80 /* CounterListItemView.swift */,
@@ -207,6 +210,7 @@
 				6C6DBA352C70D2FD00CA3C80 /* Log+CoreDataClass.swift in Sources */,
 				6C6DBA362C70D2FD00CA3C80 /* Log+CoreDataProperties.swift in Sources */,
 				6C3FCA272C733B85007CDAE0 /* StrokeEmojiCircle.swift in Sources */,
+				6CB49EC02C75E4560027F1C0 /* LogsView.swift in Sources */,
 				6C6DBA392C70D7BC00CA3C80 /* CounterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

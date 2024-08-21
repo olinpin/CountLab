@@ -79,7 +79,7 @@ struct AddCounter: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing, content: {
+            ToolbarItem(placement: .topBarLeading, content: {
                 Button(action: {
                     self.visible = false
                 }, label: {

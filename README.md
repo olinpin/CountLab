@@ -39,3 +39,5 @@ Application that will allow you to keep track of anything you need
 - [ ] Streaks
     - [ ] "Good job, you've completed your goal 7 days in a row" etc.
 - [ ] Confeti when you achieve your daily goal
+- [ ] Core data with iCloud loads way too long (I think)
+- [ ] Style the 'past entries' button

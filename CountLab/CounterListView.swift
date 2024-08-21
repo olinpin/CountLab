@@ -38,7 +38,7 @@ struct CounterListView: View {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarLeading) {
                     EditButton()
                 }
             }
