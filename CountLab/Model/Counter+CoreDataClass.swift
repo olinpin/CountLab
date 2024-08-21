@@ -23,6 +23,28 @@ public class Counter: NSManagedObject {
         }) ?? []
         return sum.reduce(0, +)
     }
+    
+    func doneTotal() -> Float {
+        let sum: [Float] = self.log?.map( {
+            let log = $0 as! Log
+            return log.value
+        }) ?? []
+        return sum.reduce(0, +)
+    }
+    
+    func averagePerDay() -> Float {
+        let first = self.firstEntry()
+        if first == nil {
+            return 0
+        }
+        let daysSinceFirst = first!.timestamp!.daysSince + 1
+        return self.doneTotal() / Float(daysSinceFirst)
+    }
+    
+    func firstEntry() -> Log? {
+        let logs: [Log] = (self.log?.allObjects as! [Log]).sorted(by: {$0.timestamp ?? Date() < $1.timestamp ?? Date()})
+        return logs.first
+    }
 }
 
 

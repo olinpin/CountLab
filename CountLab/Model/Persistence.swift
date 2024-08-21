@@ -15,7 +15,7 @@ struct PersistenceController {
         let viewContext = result.container.viewContext
         let newCounter = Counter(context: viewContext)
         newCounter.emoji = "🐱"
-        newCounter.goal = 10
+        newCounter.goal = 50
         newCounter.name = "Pull ups"
         newCounter.log = []
         newCounter.backgroundColor = "#FFDDDD"

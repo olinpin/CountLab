@@ -122,4 +122,14 @@ extension Date {
         dateFormatter.timeStyle = .short
         return dateFormatter.string(from: self)
     }
+    
+    func numberOfDaysBetween(_ from: Date, and to: Date) -> Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: from, to: to)
+        return components.day ?? 0
+    }
+    
+    var daysSince: Int {
+        return self.numberOfDaysBetween(self, and: Date())
+    }
 }

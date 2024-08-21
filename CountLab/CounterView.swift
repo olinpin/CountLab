@@ -10,7 +10,7 @@ import CoreData
 
 struct CounterView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    
     var counter: Counter
     
     
@@ -26,11 +26,15 @@ struct CounterView: View {
     
     
     @State var doneToday: Float
-
-
+    @State var doneTotal: Float
+    @State var averagePerDay: Float
+    
+    
     init(counter: Counter) {
         self.counter = counter
         self.doneToday = counter.doneToday()
+        self.doneTotal = counter.doneTotal()
+        self.averagePerDay = counter.averagePerDay()
     }
     
     var body: some View {
@@ -42,6 +46,16 @@ struct CounterView: View {
                 .font(.largeTitle)
                 .foregroundColor(.primary)
                 .padding(.bottom)
+            
+            HStack {
+                Text("Total: \(Utils.formatFloat(doneTotal))")
+                Spacer()
+                Text("Average per day: \(Utils.formatFloat(averagePerDay))")
+            }
+            .font(.subheadline)
+            .foregroundStyle(.gray)
+            .padding(.horizontal)
+            .padding(.horizontal)
             
             TextField("Enter Value", text: $stringLog)
                 .keyboardType(.decimalPad)
@@ -62,7 +76,7 @@ struct CounterView: View {
                         floatLog = 0
                     }
                 }
-
+            
             
             HStack(spacing: 20) {
                 makeButton(text: "Subtract", action: subtractValue, color: .red)
@@ -100,7 +114,7 @@ struct CounterView: View {
             logValue(-self.floatLog)
         }
     }
-
+    
     private func logValue(_ value: Float) {
         print("self.numberField is not nill")
         let log = Log(context: viewContext)
@@ -117,8 +131,14 @@ struct CounterView: View {
             self.errorMessage = "Something went wrong while saving, please try again later"
             self.showAlert = true
         }
+        self.updateCounters()
+    }
+    
+    private func updateCounters() {
         withAnimation {
             self.doneToday = counter.doneToday()
+            self.doneTotal = counter.doneTotal()
+            self.averagePerDay = counter.averagePerDay()
         }
     }
     
@@ -150,5 +170,5 @@ struct CounterView: View {
         CounterView(counter: Counter(context: PersistenceController.preview.container.viewContext))
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
-
+    
 }
